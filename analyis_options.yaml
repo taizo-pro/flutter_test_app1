@@ -1,0 +1,6 @@
+linter:
+  rules:
+    - camel_case_types
+analyzer:
+  errors:
+    camel_case_types: error
