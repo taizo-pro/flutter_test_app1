@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_app1/next_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,9 +13,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
@@ -38,34 +38,26 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  String text = '次へ';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Widget.title'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-    '$_counter',
-              style: Theme.of(context).textTheme.headline2,
-            ),
-            Text(
-              'youhaveatimer!!',
-              style: Theme.of(context).textTheme.headline4)
-          ],
+        child: RichText(
+          text: TextSpan(
+            text: 'Hello ',
+            style: DefaultTextStyle.of(context).style,
+            children: <TextSpan>[
+              TextSpan(text: 'bold', style: TextStyle(fontWeight: FontWeight.bold)),
+              TextSpan(text: ' world!'),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
