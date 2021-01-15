@@ -1,31 +1,56 @@
 import 'package:flutter/material.dart';
 
-class NextPage extends StatelessWidget {
-  NextPage(this.name);
-  final String name;
-    @override
+class TodoAddPage extends StatefulWidget {
+  @override
+  _TodoAddPageState createState() => _TodoAddPageState();
+}
+
+class _TodoAddPageState extends State<TodoAddPage> {
+  String _text = '';
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ゆで卵専用タイマー'),
-        actions: [
-          Icon(Icons.add),
-          Icon(Icons.share)
-        ],
-      ),
-      body: Center(
-        child: Container(
-          // color: Colors.red,
-          child: RaisedButton(
-            child: Text(name),
-            onPressed: () {
-              Navigator.pop(
-                context, 'へいへい'
-              );
-            },
-          )
+        appBar: AppBar(
+          title: Text('リスト追加'),
         ),
-      )
-    );
+        body: Container(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(_text),
+              Container(
+                  width: double.infinity,
+                  child: TextFormField(
+                    decoration: InputDecoration(labelText: 'タスクを入力してください'),
+                    onChanged: (String value) {
+                      setState(() {
+                        _text = value;
+                      });
+                    },
+                  )),
+              Container(
+                width: double.infinity,
+                child: RaisedButton(
+                  color: Colors.yellow,
+                  onPressed: () {
+                    Navigator.pop(context, _text);
+                  },
+                  child: Text('リスト追加'),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('キャンセル'),
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }
