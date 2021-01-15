@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app1/next_page.dart';
+import 'package:test_app1/details.dart';
 
 void main() {
   runApp(todoApp());
@@ -27,15 +28,22 @@ class _TodoListPageState extends State<TodoListPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('リスト一覧'),
+          actions: [
+            IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TodoDetails()));
+                })
+          ],
         ),
         body: ListView.builder(
           itemCount: todoList.length,
           itemBuilder: (context, index) {
             return Card(
-              child: ListTile(
-                title: Text(todoList[index]),
-              )
-            );
+                child: ListTile(
+              title: Text(todoList[index]),
+            ));
           },
         ),
         floatingActionButton: FloatingActionButton(
