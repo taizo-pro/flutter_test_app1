@@ -28,13 +28,15 @@ class _TodoListPageState extends State<TodoListPage> {
         appBar: AppBar(
           title: Text('リスト一覧'),
         ),
-        body: ListView(
-          children: [
-            Card(child: ListTile(title: Text('りんご'))),
-            Card(child: ListTile(title: Text('バナン'))),
-            Card(child: ListTile(title: Text('ぶどう'))),
-            Card(child: ListTile(title: Text('きゅうり'))),
-          ],
+        body: ListView.builder(
+          itemCount: todoList.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                title: Text(todoList[index]),
+              )
+            );
+          },
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
