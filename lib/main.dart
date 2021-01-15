@@ -2,62 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:test_app1/next_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(todoApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class todoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
+    return new MaterialApp(
+      home: new TodoListPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-
-  final String title;
-
+class TodoListPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _TodoListPageState createState() => _TodoListPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  String text = '次へ';
+class _TodoListPageState extends State<TodoListPage> {
+  List<String> todoList = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Widget.title'),
-      ),
-      body: Center(
-        child: RichText(
-          text: TextSpan(
-            text: 'Hello ',
-            style: DefaultTextStyle.of(context).style,
-            children: <TextSpan>[
-              TextSpan(text: 'bold', style: TextStyle(fontWeight: FontWeight.bold)),
-              TextSpan(text: ' world!'),
-            ],
-          ),
+        appBar: AppBar(
+          title: Text('リスト一覧'),
         ),
-      ),
-    );
+        body: ListView(
+          children: [
+            Card(child: ListTile(title: Text('りんご'))),
+            Card(child: ListTile(title: Text('バナン'))),
+            Card(child: ListTile(title: Text('ぶどう'))),
+            Card(child: ListTile(title: Text('きゅうり'))),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            final newListText = await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TodoAddPage()),
+            );
+            print("newListText");
+            print(newListText);
+            if (newListText != null) {
+              setState(() {
+                todoList.add(newListText);
+              });
+            }
+          },
+          child: Icon(Icons.add),
+        ));
   }
 }
