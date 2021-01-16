@@ -41,9 +41,11 @@ class _TodoListPageState extends State<TodoListPage> {
           itemCount: todoList.length,
           itemBuilder: (context, index) {
             return Card(
-                child: ListTile(
-              title: Text(todoList[index]),
-            ));
+              child: ListTile(
+                title: Text(todoList[index]),
+                trailing: Icon(Icons.favorite),
+              )
+            );
           },
         ),
         floatingActionButton: FloatingActionButton(
