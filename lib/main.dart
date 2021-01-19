@@ -22,6 +22,7 @@ class TodoListPage extends StatefulWidget {
 
 class _TodoListPageState extends State<TodoListPage> {
   List<String> todoList = [];
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,19 @@ class _TodoListPageState extends State<TodoListPage> {
             return Card(
               child: ListTile(
                 title: Text(todoList[index]),
-                trailing: Icon(Icons.favorite),
+                trailing: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      if(isFavorite) {
+                        isFavorite = false;
+                      } else {
+                        isFavorite = true;
+                      }
+                    });
+                  },
+                  icon: Icon(isFavorite == true ? Icons.favorite : Icons.favorite_border),
+                  color: isFavorite == true ? Colors.red : Colors.grey,
+                ),
               )
             );
           },
