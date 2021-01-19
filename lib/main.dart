@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_app1/next_page.dart';
-import 'package:test_app1/details.dart';
+import 'package:test_app1/todo_add.dart';
+import 'package:test_app1/favorite_list.dart';
 
 void main() {
   runApp(todoApp());
@@ -34,7 +34,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 icon: Icon(Icons.menu),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TodoDetails()));
+                      MaterialPageRoute(builder: (context) => FavoriteList()));
                 })
           ],
         ),

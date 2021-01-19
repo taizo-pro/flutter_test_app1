@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TodoDetails extends StatefulWidget {
+class FavoriteList extends StatefulWidget {
   @override
-  _TodoDetailsPageState createState() => _TodoDetailsPageState();
+  _FavoriteListPageState createState() => _FavoriteListPageState();
 }
 
-class _TodoDetailsPageState extends State<TodoDetails> {
+class _FavoriteListPageState extends State<FavoriteList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
