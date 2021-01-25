@@ -42,23 +42,24 @@ class _TodoListPageState extends State<TodoListPage> {
           itemCount: todoList.length,
           itemBuilder: (context, index) {
             return Card(
-              child: ListTile(
-                title: Text(todoList[index]),
-                trailing: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      if(isFavorite) {
-                        isFavorite = false;
-                      } else {
-                        isFavorite = true;
-                      }
-                    });
-                  },
-                  icon: Icon(isFavorite == true ? Icons.favorite : Icons.favorite_border),
-                  color: isFavorite == true ? Colors.red : Colors.grey,
-                ),
-              )
-            );
+                child: ListTile(
+              title: Text(todoList[index]),
+              trailing: IconButton(
+                onPressed: () {
+                  setState(() {
+                    if (isFavorite) {
+                      isFavorite = false;
+                    } else {
+                      isFavorite = true;
+                    }
+                  });
+                },
+                icon: Icon(isFavorite == true
+                    ? Icons.favorite
+                    : Icons.favorite_border),
+                color: isFavorite == true ? Colors.red : Colors.grey,
+              ),
+            ));
           },
         ),
         floatingActionButton: FloatingActionButton(
