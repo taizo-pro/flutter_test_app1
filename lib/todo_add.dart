@@ -37,7 +37,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   onPressed: () {
                     Navigator.pop(context, _text);
                   },
-                  child: Text('リスト追加'),
+                  child: Text('タスク追加'),
                 ),
               ),
               Container(
