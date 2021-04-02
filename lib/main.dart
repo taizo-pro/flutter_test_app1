@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:test_app1/todo_add.dart';
 import 'package:test_app1/favorite_list.dart';
 
@@ -34,7 +35,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 icon: Icon(Icons.menu),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FavoriteList()));
+                      CupertinoPageRoute(builder: (context) => FavoriteList()));
                 })
           ],
         ),
@@ -66,7 +67,7 @@ class _TodoListPageState extends State<TodoListPage> {
           onPressed: () async {
             final newListText = await Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => TodoAddPage()),
+              CupertinoPageRoute(builder: (context) => TodoAddPage()),
             );
             print("newListText");
             print(newListText);
