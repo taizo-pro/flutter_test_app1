@@ -69,8 +69,6 @@ class _TodoListPageState extends State<TodoListPage> {
               context,
               CupertinoPageRoute(builder: (context) => TodoAddPage()),
             );
-            print("newListText");
-            print(newListText);
             if (newListText != null) {
               setState(() {
                 todoList.add(newListText);
